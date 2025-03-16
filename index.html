@@ -5,31 +5,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abinash Pradhan | Blog</title>
+
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Abinash Pradhan | Blog">
+    <meta name="description"
+        content="Explore insights on Machine Learning, Data Science, AI Ethics, and NLP Advances from Abinash Pradhan's technical blog.">
+    <meta name="keywords"
+        content="ML Blog, Data Science Blog, AI Blog, NLP Blog, Machine Learning Articles, Data Science Articles, Abinash Pradhan">
+    <meta name="author" content="Abinash Pradhan">
+    <meta name="application-name" content="Abinash Pradhan Blog">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://abinashpradhan01.github.io/blog.html">
+    <meta property="og:title" content="Abinash Pradhan | Blog">
+    <meta property="og:description"
+        content="Explore insights on Machine Learning, Data Science, AI Ethics, and NLP Advances from Abinash Pradhan's technical blog.">
+    <meta property="og:site_name" content="Abinash Pradhan Blog">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://abinashpradhan01.github.io/blog.html">
+    <meta property="twitter:title" content="Abinash Pradhan | Blog">
+    <meta property="twitter:description"
+        content="Explore insights on Machine Learning, Data Science, AI Ethics, and NLP Advances from Abinash Pradhan's technical blog.">
+    <meta property="twitter:creator" content="@abinashpradhan01">
+
+    <!-- Additional SEO Meta Tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <meta name="generator" content="HTML5">
+    <meta name="theme-color" content="#4f46e5">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Abinash Pradhan Blog">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://abinashpradhan01.github.io/blog.html">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #2563eb;
+            --primary: #4f46e5;
             --secondary: #64748b;
             --dark: #0f172a;
             --light: #f8fafc;
-            --gradient-primary: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+            --gradient-primary: linear-gradient(135deg, #4f46e5 0%, #818cf8 100%);
             --card-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --card-border-radius: 1rem;
+            --tag-bg: #f3f4f6;
+            --border-color: #e5e7eb;
+            --background-color: #f0f4f8;
+            --card-background: #ffffff;
+            --text-color: #0f172a;
+        }
+
+        /* Dark mode variables */
+        .dark-mode {
+            --primary: #818cf8;
+            --secondary: #94a3b8;
+            --dark: #e2e8f0;
+            --light: #0f172a;
+            --background-color: #1e293b;
+            --card-background: #1e293b;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --text-color: #e2e8f0;
+            --border-color: #334155;
+            --tag-bg: #334155;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            background: #f0f4f8;
-            color: var(--dark);
+            background: var(--background-color);
+            color: var(--text-color);
             line-height: 1.6;
+            position: relative;
+            min-height: 100vh;
+            background-image:
+                radial-gradient(circle at 0% 0%, rgba(79, 70, 229, 0.1) 0%, transparent 25%),
+                radial-gradient(circle at 100% 100%, rgba(79, 70, 229, 0.1) 0%, transparent 25%);
         }
 
         .header {
@@ -48,7 +114,7 @@
             left: 0;
             right: 0;
             height: 100px;
-            background: #f0f4f8;
+            background: var(--background-color);
             transform: skewY(-3deg);
         }
 
@@ -58,11 +124,168 @@
             margin-bottom: 1rem;
             font-weight: 700;
             letter-spacing: -0.5px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards 0.3s;
+        }
+
+        .typewriter-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 3rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: 600;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards 0.5s;
+        }
+
+        .static-text {
+            margin-right: 0.5rem;
+        }
+
+        .dynamic-text-wrapper {
+            height: 3rem;
+            line-height: 3rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .dynamic-text {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            animation: slide 12s steps(4) infinite;
+        }
+
+        .dynamic-text span {
+            position: relative;
+            height: 3rem;
+            color: white;
+        }
+
+        @keyframes slide {
+            100% {
+                top: -12rem;
+            }
         }
 
         .header p {
             font-size: 1.2rem;
-            opacity: 0.9;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards 0.5s;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Navigation */
+        .nav {
+            background: var(--card-background);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 1.25rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-home {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary);
+            text-decoration: none;
+            position: relative;
+        }
+
+        .nav-home:hover {
+            color: var(--dark);
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--dark);
+            text-decoration: none;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Theme toggle */
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--tag-bg);
+            color: var(--primary);
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
         }
 
         .container {
@@ -74,13 +297,16 @@
         }
 
         .blog-card {
-            background: white;
-            border-radius: 16px;
-            padding: 2.5rem;
-            margin-bottom: 2rem;
+            background: var(--card-background);
+            border-radius: var(--card-border-radius);
+            padding: 1.75rem;
+            margin-bottom: 1.5rem;
             box-shadow: var(--card-shadow);
-            transition: transform 0.3s ease;
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+            opacity: 0;
+            animation: fadeIn 0.8s forwards;
+            animation-delay: calc(var(--order) * 0.2s);
         }
 
         .blog-card:hover {
@@ -89,175 +315,487 @@
         }
 
         .blog-title {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             color: var(--dark);
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             font-weight: 700;
             line-height: 1.3;
-        }
-
-        .blog-preview {
-            color: var(--secondary);
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-        }
-
-        .read-more {
-            display: inline-flex;
-            align-items: center;
-            text-decoration: none;
-            color: var(--primary);
-            font-weight: 600;
-            padding: 0.5rem 0;
-            position: relative;
-        }
-
-        .read-more::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s ease;
-        }
-
-        .read-more:hover::after {
-            width: 100%;
         }
 
         .blog-meta {
             display: flex;
             align-items: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             color: var(--secondary);
             font-size: 0.9rem;
         }
 
-        .blog-meta span {
+        .blog-meta-item {
             display: flex;
             align-items: center;
             margin-right: 1.5rem;
         }
 
-        .blog-meta i {
+        .blog-meta-item i {
             margin-right: 0.5rem;
-        }
-
-        /* New Navigation Styles */
-        .nav {
-            background: white;
-            padding: 1rem 2rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-container {
-            max-width: 900px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-home {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .nav-home:hover {
             color: var(--primary);
         }
 
-        /* Updated Header Title Style */
-        .header h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
+        .blog-excerpt {
+            color: var(--text-color);
+            margin-bottom: 1.25rem;
+            line-height: 1.6;
         }
 
-        /* Footer Styles */
-        .footer {
+        .blog-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .blog-tag {
+            background: var(--tag-bg);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .blog-tag:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .read-more i {
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: var(--dark);
+        }
+
+        .read-more:hover i {
+            transform: translateX(3px);
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 3rem;
+            gap: 0.5rem;
+        }
+
+        .pagination-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--card-background);
+            border: 1px solid var(--border-color);
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .pagination-item.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .pagination-item:hover:not(.active) {
+            background: var(--tag-bg);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem 0 1.5rem;
             text-align: center;
-            padding: 2rem;
-            background: white;
             color: var(--secondary);
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            background: var(--card-background);
+            border-top: 1px solid var(--border-color);
+            position: relative;
         }
 
-        @media (max-width: 768px) {
-            .header {
-                padding: 3rem 0 5rem 0;
-            }
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+        }
 
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .footer-text {
+            font-size: 0.95rem;
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.7;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--tag-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .footer-social-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .footer-nav a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .footer-nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .footer-nav a:hover::after {
+            width: 100%;
+        }
+
+        .footer-nav a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
             .header h1 {
                 font-size: 2.5rem;
             }
 
-            .blog-title {
+            .typewriter-container {
                 font-size: 1.5rem;
+                height: 2.5rem;
+            }
+
+            .dynamic-text-wrapper {
+                height: 2.5rem;
+                line-height: 2.5rem;
+            }
+
+            .dynamic-text span {
+                height: 2.5rem;
+            }
+
+            @keyframes slide {
+                100% {
+                    top: -10rem;
+                }
+            }
+
+            .nav-container {
+                padding: 1rem;
             }
 
             .blog-card {
                 padding: 1.5rem;
+            }
+
+            .blog-title {
+                font-size: 1.4rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-right {
+                gap: 1rem;
+            }
+
+            .typewriter-container {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .static-text {
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+            }
+
+            .blog-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .blog-meta-item {
+                margin-right: 0;
+            }
+
+            .footer-nav {
+                flex-wrap: wrap;
+                gap: 1rem;
             }
         }
     </style>
 </head>
 
 <body>
-    <nav class="nav">
+    <!-- Navigation -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
-            <a href="https://abinashpradhan01.github.io" class="nav-home">
-                <i class="fas fa-home"></i>
-                Home
-            </a>
+            <div class="nav-right">
+                <a href="https://abinashpradhan01.github.io" class="nav-link">Home</a>
+                <a href="https://abinashpradhan01.github.io/about/" class="nav-link">About</a>
+                <a href="https://abinashpradhan01.github.io/projects/" class="nav-link">Projects</a>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
-    <header class="header">
-        <h1>My Blogs</h1>
-        <p>Sharing thoughts on Machine Learning, AI, and Technology</p>
+    <!-- Header -->
+    <header class="header" role="banner">
+        <h1>My Blog</h1>
+        <div class="typewriter-container" role="status" aria-live="polite">
+            <div class="static-text">Thoughts on</div>
+            <div class="dynamic-text-wrapper">
+                <div class="dynamic-text">
+                    <span>Machine Learning</span>
+                    <span>Data Science</span>
+                    <span>AI Ethics</span>
+                    <span>NLP Advances</span>
+                    <span>Machine Learning</span> <!-- Repeated for smooth loop -->
+                </div>
+            </div>
+        </div>
     </header>
 
-    <div class="container">
-        <!-- Blog Post 1 -->
-        <div class="blog-card">
-            <h2 class="blog-title">Getting Started with Machine Learning</h2>
+    <div class="container" role="main">
+        <!-- Blog Posts -->
+        <article class="blog-card" style="--order: 1">
+            <h2 class="blog-title">Understanding Transformer Architecture in NLP</h2>
             <div class="blog-meta">
-                <span><i class="far fa-calendar"></i> April 15, 2024</span>
-                <span><i class="far fa-clock"></i> 8 min read</span>
+                <div class="blog-meta-item">
+                    <i class="far fa-calendar" aria-hidden="true"></i>
+                    <span>March 12, 2024</span>
+                </div>
+                <div class="blog-meta-item">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <span>8 min read</span>
+                </div>
             </div>
-            <p class="blog-preview">An introductory guide to understanding the basics of machine learning, including
-                types of learning, popular algorithms, and practical applications.</p>
-            <a href="https://www.notion.so/sample-blog-link" target="_blank" class="read-more">Read More →</a>
-        </div>
+            <div class="blog-tags" aria-label="Tags">
+                <span class="blog-tag">NLP</span>
+                <span class="blog-tag">Transformers</span>
+                <span class="blog-tag">Deep Learning</span>
+            </div>
+            <p class="blog-excerpt">Transformer architecture has revolutionized natural language processing, enabling
+                breakthroughs like BERT, GPT, and other large language models. This post explores the key components of
+                transformers including attention mechanisms, positional encoding, and why they work so well for language
+                tasks.</p>
+            <a href="#" class="read-more">Read more <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+        </article>
 
-        <!-- Blog Post 2 -->
-        <div class="blog-card">
-            <h2 class="blog-title">Exploring Transformer Models in NLP</h2>
+        <article class="blog-card" style="--order: 2">
+            <h2 class="blog-title">Building Effective Recommendation Systems</h2>
             <div class="blog-meta">
-                <span><i class="far fa-calendar"></i> April 12, 2024</span>
-                <span><i class="far fa-clock"></i> 12 min read</span>
+                <div class="blog-meta-item">
+                    <i class="far fa-calendar" aria-hidden="true"></i>
+                    <span>February 28, 2024</span>
+                </div>
+                <div class="blog-meta-item">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <span>6 min read</span>
+                </div>
             </div>
-            <p class="blog-preview">Understand the architecture and significance of Transformer models in Natural
-                Language Processing. Dive into attention mechanisms and more.</p>
-            <a href="https://www.notion.so/another-sample-link" target="_blank" class="read-more">Read More →</a>
-        </div>
+            <div class="blog-tags" aria-label="Tags">
+                <span class="blog-tag">Recommendation Systems</span>
+                <span class="blog-tag">Collaborative Filtering</span>
+                <span class="blog-tag">Machine Learning</span>
+            </div>
+            <p class="blog-excerpt">Recommendation systems have become essential for modern applications from streaming
+                services to e-commerce. This article explores different recommendation techniques including
+                collaborative filtering, content-based methods, and hybrid approaches that combine both for better
+                results.</p>
+            <a href="#" class="read-more">Read more <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+        </article>
+
+        <article class="blog-card" style="--order: 3">
+            <h2 class="blog-title">Data Preprocessing Techniques for Machine Learning</h2>
+            <div class="blog-meta">
+                <div class="blog-meta-item">
+                    <i class="far fa-calendar" aria-hidden="true"></i>
+                    <span>February 15, 2024</span>
+                </div>
+                <div class="blog-meta-item">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <span>10 min read</span>
+                </div>
+            </div>
+            <div class="blog-tags" aria-label="Tags">
+                <span class="blog-tag">Data Preprocessing</span>
+                <span class="blog-tag">Feature Engineering</span>
+                <span class="blog-tag">Machine Learning</span>
+            </div>
+            <p class="blog-excerpt">The quality of your data preprocessing directly impacts the success of your machine
+                learning models. This guide covers essential techniques including normalization, feature scaling,
+                handling missing values, encoding categorical variables, and feature selection methods to improve model
+                performance.</p>
+            <a href="#" class="read-more">Read more <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+        </article>
+
+        <article class="blog-card" style="--order: 4">
+            <h2 class="blog-title">Exploring Transfer Learning in Computer Vision</h2>
+            <div class="blog-meta">
+                <div class="blog-meta-item">
+                    <i class="far fa-calendar" aria-hidden="true"></i>
+                    <span>January 30, 2024</span>
+                </div>
+                <div class="blog-meta-item">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <span>7 min read</span>
+                </div>
+            </div>
+            <div class="blog-tags" aria-label="Tags">
+                <span class="blog-tag">Computer Vision</span>
+                <span class="blog-tag">Transfer Learning</span>
+                <span class="blog-tag">CNN</span>
+            </div>
+            <p class="blog-excerpt">Transfer learning has transformed how we approach computer vision tasks, especially
+                with limited data. Learn how to leverage pre-trained models like ResNet, VGG, and EfficientNet to
+                achieve impressive results on custom datasets with minimal training time and computational resources.
+            </p>
+            <a href="#" class="read-more">Read more <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+        </article>
     </div>
 
-    <footer class="footer">
-        <p>© 2025 Abinash Pradhan. All rights reserved.</p>
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <div class="footer-content">
+            <p class="footer-text">
+                Always learning, always growing.
+            </p>
+            <div class="footer-social">
+                <a href="https://github.com/abinashpradhan01" target="_blank" class="footer-social-link"
+                    aria-label="GitHub">
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                </a>
+                <a href="https://in.linkedin.com/in/abinash-pradhan-a42157297" target="_blank"
+                    class="footer-social-link" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                </a>
+                <a href="mailto:baijayantis56@gmail.com" class="footer-social-link" aria-label="Email">
+                    <i class="far fa-envelope" aria-hidden="true"></i>
+                </a>
+                <a href="#" class="footer-social-link" aria-label="Twitter">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </div>
+            <div class="footer-nav">
+                <a href="https://abinashpradhan01.github.io">Home</a>
+                <a href="https://abinashpradhan01.github.io/about/">About</a>
+                <a href="https://abinashpradhan01.github.io/projects/">Projects</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Abinash Pradhan. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
+
+    <script>
+        // Dark mode toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+            themeToggle.innerHTML = '<i class="fas fa-sun" aria-hidden="true"></i>';
+            themeToggle.setAttribute('aria-pressed', 'true');
+        }
+
+        // Toggle theme
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const isDarkMode = body.classList.contains('dark-mode');
+
+            if (isDarkMode) {
+                localStorage.setItem('theme', 'dark');
+                themeToggle.innerHTML = '<i class="fas fa-sun" aria-hidden="true"></i>';
+                themeToggle.setAttribute('aria-pressed', 'true');
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeToggle.innerHTML = '<i class="fas fa-moon" aria-hidden="true"></i>';
+                themeToggle.setAttribute('aria-pressed', 'false');
+            }
+        });
+    </script>
 </body>
 
 </html>
