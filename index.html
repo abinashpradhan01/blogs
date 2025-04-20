@@ -502,110 +502,69 @@
 
         /* Footer */
         footer {
-            padding: 2rem 0 1.5rem;
+            padding: 1.5rem;
             text-align: center;
-            color: var(--secondary);
-            background: var(--card-background);
+            background-color: var(--card-background);
             border-top: 1px solid var(--border-color);
-            position: relative;
-        }
-
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: var(--gradient-primary);
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .footer-logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 1rem;
-        }
-
-        .footer-text {
-            font-size: 0.95rem;
-            max-width: 600px;
-            margin: 0 auto 1.5rem;
-            line-height: 1.7;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
 
         .footer-social {
+            margin: 0.75rem 0;
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
+            gap: 1.25rem;
         }
 
-        .footer-social-link {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: var(--tag-bg);
+        .social-link {
             display: flex;
             align-items: center;
             justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background-color: var(--background-color);
             color: var(--primary);
-            font-size: 1.2rem;
-            transition: var(--transition);
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
-        .footer-social-link:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-        }
-
-        .footer-nav {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin: 1.5rem 0;
-        }
-
-        .footer-nav a {
-            color: var(--dark);
-            text-decoration: none;
-            font-weight: 500;
-            position: relative;
-            padding: 0.5rem 0;
-        }
-
-        .footer-nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
+        .social-link:hover {
+            color: var(--light);
             background-color: var(--primary);
-            transition: width 0.3s;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
-        .footer-nav a:hover::after {
-            width: 100%;
+        .footer-text {
+            color: var(--text-color);
+            font-size: 0.85rem;
+            margin: 0;
+            font-weight: 500;
         }
 
-        .footer-nav a:hover {
+        .footer-proverb {
+            font-style: italic;
             color: var(--primary);
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+            font-weight: 500;
         }
 
-        .footer-bottom {
-            border-top: 1px solid var(--border-color);
-            padding-top: 1.5rem;
-            margin-top: 1.5rem;
-            font-size: 0.9rem;
+        /* Dark mode overrides */
+        .dark-mode footer {
+            background-color: var(--card-background);
+            border-color: var(--border-color);
+        }
+
+        .dark-mode .social-link {
+            background-color: var(--background-color);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .dark-mode .social-link:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
         /* Responsive */
@@ -671,11 +630,6 @@
             .blog-meta-item {
                 margin-right: 0;
             }
-
-            .footer-nav {
-                flex-wrap: wrap;
-                gap: 1rem;
-            }
         }
     </style>
 </head>
@@ -715,59 +669,11 @@
     <div class="container" role="main">
         <!-- Blog Posts -->
         <article class="blog-card" style="--order: 1">
-            <h2 class="blog-title">Understanding Transformer Architecture in NLP</h2>
+            <h2 class="blog-title">Demystifying EDA and Data Preprocessing: A Beginner's Guide with Real Projects</h2>
             <div class="blog-meta">
                 <div class="blog-meta-item">
                     <i class="far fa-calendar" aria-hidden="true"></i>
-                    <span>March 12, 2024</span>
-                </div>
-                <div class="blog-meta-item">
-                    <i class="far fa-clock" aria-hidden="true"></i>
-                    <span>8 min read</span>
-                </div>
-            </div>
-            <div class="blog-tags" aria-label="Tags">
-                <span class="blog-tag">NLP</span>
-                <span class="blog-tag">Transformers</span>
-                <span class="blog-tag">Deep Learning</span>
-            </div>
-            <p class="blog-excerpt">Transformer architecture has revolutionized natural language processing, enabling
-                breakthroughs like BERT, GPT, and other large language models. This post explores the key components of
-                transformers including attention mechanisms, positional encoding, and why they work so well for language
-                tasks.</p>
-            <a href="#" class="read-more">Read more <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-        </article>
-
-        <article class="blog-card" style="--order: 2">
-            <h2 class="blog-title">Building Effective Recommendation Systems</h2>
-            <div class="blog-meta">
-                <div class="blog-meta-item">
-                    <i class="far fa-calendar" aria-hidden="true"></i>
-                    <span>February 28, 2024</span>
-                </div>
-                <div class="blog-meta-item">
-                    <i class="far fa-clock" aria-hidden="true"></i>
-                    <span>6 min read</span>
-                </div>
-            </div>
-            <div class="blog-tags" aria-label="Tags">
-                <span class="blog-tag">Recommendation Systems</span>
-                <span class="blog-tag">Collaborative Filtering</span>
-                <span class="blog-tag">Machine Learning</span>
-            </div>
-            <p class="blog-excerpt">Recommendation systems have become essential for modern applications from streaming
-                services to e-commerce. This article explores different recommendation techniques including
-                collaborative filtering, content-based methods, and hybrid approaches that combine both for better
-                results.</p>
-            <a href="#" class="read-more">Read more <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-        </article>
-
-        <article class="blog-card" style="--order: 3">
-            <h2 class="blog-title">Data Preprocessing Techniques for Machine Learning</h2>
-            <div class="blog-meta">
-                <div class="blog-meta-item">
-                    <i class="far fa-calendar" aria-hidden="true"></i>
-                    <span>February 15, 2024</span>
+                    <span>May 2, 2025</span>
                 </div>
                 <div class="blog-meta-item">
                     <i class="far fa-clock" aria-hidden="true"></i>
@@ -775,70 +681,33 @@
                 </div>
             </div>
             <div class="blog-tags" aria-label="Tags">
+                <span class="blog-tag">EDA</span>
+                <span class="blog-tag">Data Analysis</span>
                 <span class="blog-tag">Data Preprocessing</span>
-                <span class="blog-tag">Feature Engineering</span>
-                <span class="blog-tag">Machine Learning</span>
             </div>
-            <p class="blog-excerpt">The quality of your data preprocessing directly impacts the success of your machine
-                learning models. This guide covers essential techniques including normalization, feature scaling,
-                handling missing values, encoding categorical variables, and feature selection methods to improve model
-                performance.</p>
-            <a href="#" class="read-more">Read more <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-        </article>
-
-        <article class="blog-card" style="--order: 4">
-            <h2 class="blog-title">Exploring Transfer Learning in Computer Vision</h2>
-            <div class="blog-meta">
-                <div class="blog-meta-item">
-                    <i class="far fa-calendar" aria-hidden="true"></i>
-                    <span>January 30, 2024</span>
-                </div>
-                <div class="blog-meta-item">
-                    <i class="far fa-clock" aria-hidden="true"></i>
-                    <span>7 min read</span>
-                </div>
-            </div>
-            <div class="blog-tags" aria-label="Tags">
-                <span class="blog-tag">Computer Vision</span>
-                <span class="blog-tag">Transfer Learning</span>
-                <span class="blog-tag">CNN</span>
-            </div>
-            <p class="blog-excerpt">Transfer learning has transformed how we approach computer vision tasks, especially
-                with limited data. Learn how to leverage pre-trained models like ResNet, VGG, and EfficientNet to
-                achieve impressive results on custom datasets with minimal training time and computational resources.
-            </p>
+            <p class="blog-excerpt">Explore the fundamentals of Exploratory Data Analysis (EDA) and data preprocessing
+                through practical examples. This guide covers essential techniques, common pitfalls, and real-world
+                applications to help you transform raw data into valuable insights.</p>
             <a href="#" class="read-more">Read more <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
         </article>
     </div>
 
     <!-- Footer -->
     <footer role="contentinfo">
-        <div class="footer-content">
-            <p class="footer-text">
-                Always learning, always growing.
-            </p>
-            <div class="footer-social">
-                <a href="https://github.com/abinashpradhan01" target="_blank" class="footer-social-link"
-                    aria-label="GitHub">
-                    <i class="fab fa-github" aria-hidden="true"></i>
-                </a>
-                <a href="https://in.linkedin.com/in/abinash-pradhan-a42157297" target="_blank"
-                    class="footer-social-link" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin-in" aria-hidden="true"></i>
-                </a>
-                <a href="mailto:baijayantis56@gmail.com" class="footer-social-link" aria-label="Email">
-                    <i class="far fa-envelope" aria-hidden="true"></i>
-                </a>
-            </div>
-            <div class="footer-nav">
-                <a href="https://abinashpradhan01.github.io">Home</a>
-                <a href="https://abinashpradhan01.github.io/about/">About</a>
-                <a href="https://abinashpradhan01.github.io/projects/">Projects</a>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Abinash Pradhan. All rights reserved.</p>
-            </div>
+        <p class="footer-proverb">always learning, always growing</p>
+        <div class="footer-social">
+            <a href="https://github.com/abinashpradhan01" class="social-link" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/abinash-pradhan-01" class="social-link" target="_blank"
+                rel="noopener noreferrer">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="mailto:abinash01pradhan@gmail.com" class="social-link" target="_blank" rel="noopener noreferrer">
+                <i class="far fa-envelope"></i>
+            </a>
         </div>
+        <p class="footer-text">&copy; 2025 Abinash Pradhan. All rights reserved.</p>
     </footer>
 
     <script>
