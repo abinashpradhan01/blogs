@@ -89,5 +89,3 @@ If you re-add category filtering:
 - [ ] Update structured data if needed
 
 ---
-
-If you want, I can generate a ready-to-use template for your next blog card. Just let me know!
